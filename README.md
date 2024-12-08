@@ -2,7 +2,7 @@
 
 ![Big Johns](https://rs-menus-api.roocdn.com/images/f23c9c9a-d1a7-4d97-b0b4-a7d4ec9a6ef6/image.jpeg) 
 
-Welcome to my SQL & Power BI project, where I analyze real-time pizza sales data from **The Big John's Pizza UK**! This project uses a dataset of **10,000 visit records** to explore and analyze gym membership and visit data, answering key business questions that can help a fitness center understand its customer base better and optimize its services.
+Welcome to my SQL & Power BI project, where I analyze real-time pizza sales data from The Big John's Pizza UK! Using a dataset of 10,000+ pizza sales records, this project leverages SQL to extract, transform, and query data, uncovering sales patterns, revenue trends, and customer preferences. Later Power BI enhances the analysis with an interactive dashboard, providing visualizations and actionable insights to drive business performance.
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -19,7 +19,7 @@ Welcome to my SQL & Power BI project, where I analyze real-time pizza sales data
 
 ## Introduction
 
-This project aims to demonstrate essential SQL and Power BI skills by analyzing a dataset from The Big John's UK Pizza parlour. Using SQL, I explored membership details, member demographics, and visit patterns to derive actionable insights. This project showcases fundamental SQL techniques, including creating tables, writing queries, and analyzing data.
+This project aims to demonstrate essential SQL and Power BI skills by analyzing the dataset from Big John's UK Pizza Parlour. The project highlights advanced SQL techniques for data manipulation, DAX calculations for custom metrics, and Power BI's visualization capabilities, offering a comprehensive view of the business's key performance indicators and trends.
 
 ## Project Structure
 
