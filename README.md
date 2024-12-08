@@ -252,11 +252,11 @@ The dashboard creation involved the following stages:
 - Implemented data processing utilizing the DAX functionalities to create custom columns (order_day, order_month, day_number, month_number, etc.).
 - Building Charts and utilized advanced functionalities to format the same.
 
-### Dashboard Main Page
+### 1. Main Page
 
 ![Big Johns](https://github.com/user-attachments/assets/23bb4802-5a3e-4d17-a095-8740b9b4df6d) 
 
-### Dashboard Best & Worst Sellers Page
+### 2. Best & Worst Sellers Page
 
 ![Big Johns](https://github.com/user-attachments/assets/95016bd3-de01-4118-84dd-211120690a91) 
 
