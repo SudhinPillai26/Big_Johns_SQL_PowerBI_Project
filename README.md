@@ -53,9 +53,7 @@ Here’s an overview of the database structure:
 
 The following queries were created to solve specific business questions. Each query is designed to analyze key indicators of the pizza sales data to gain insights into Big John's business performance.
 
-### 1. KPI's Requirement
-
-Calculating the following essential key metrics:
+### 1. KPI's Requirement: ####Calculating the following essential key metrics:
 
 1. Total Revenue: The sum of total price of all pizza orders.
 ```sql
