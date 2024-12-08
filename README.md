@@ -266,15 +266,16 @@ The `analysis.pbix` file contains the Power BI dashboard for this project, showc
 
 ### Prerequisites
 - PostgreSQL (or any SQL-compatible database)
-- Basic understanding of SQL
+- Basic to Intermediate understanding of SQL
+- Basic to Intermediate understanding of Power BI
 
 ### Steps
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/SudhinPillai26/The_Gym_Group_UK.git
+   git clone https://github.com/SudhinPillai26/Big_Johns_SQL_PowerBI_Project.git
    ```
 2. **Set Up the Database**:
-   - Run the `TheGymGroup_Schemas.sql` script to set up tables and insert sample data.
+   - Import the `pizza_sales.csv` file to set up tables with the data.
 
 3. **Run Queries**:
    - Execute each query in `analysis.sql` to explore and analyze the data.
