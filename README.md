@@ -236,6 +236,13 @@ FROM pizza_sales
 GROUP BY pizza_name
 ORDER BY Total_Orders ASC;
 ```
+---
+
+## SQL Queries & Analysis
+
+The `analysis.sql` file contains all SQL queries developed for this project. Each query corresponds to a business problem and demonstrates skills in SQL syntax, data filtering, aggregation, grouping, and ordering.
+
+---
 
 ## Power BI Dashboard Stages
 
@@ -244,11 +251,14 @@ The dashboard creation involved the following stages:
 - Implemented data cleaning in power query tool utilizing the transform data tools functionality.
 - Implemented data processing utilizing the DAX functionalities to create custom columns (order_day, order_month, day_number, month_number, etc.).
 - Building Charts and utilized advanced functionalities to format the same.
----
 
-## SQL Queries & Analysis
+### Dashboard Main Page
 
-The `analysis.sql` file contains all SQL queries developed for this project. Each query corresponds to a business problem and demonstrates skills in SQL syntax, data filtering, aggregation, grouping, and ordering.
+![Big Johns](https://media-cdn.tripadvisor.com/media/photo-s/28/d1/78/97/exterior-view-photo-by.jpg) 
+
+### Dashboard Best & Worst Sellers Page
+
+![Big Johns](https://media-cdn.tripadvisor.com/media/photo-s/28/d1/78/97/exterior-view-photo-by.jpg) 
 
 ## Getting Started
 
