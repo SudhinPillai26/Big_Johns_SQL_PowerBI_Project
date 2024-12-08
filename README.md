@@ -1,6 +1,6 @@
 # Big_Johns_SQL_PowerBI_Project
 
-![Big Johns](https://c8.alamy.com/comp/EDAM9T/logo-on-pizza-express-restaurant-london-EDAM9T.jpg) 
+![Big Johns](https://th.bing.com/th/id/OIP.zdfxBv7kGf1U1iujkB5kewAAAA?rs=1&pid=ImgDetMain) 
 
 Welcome to my SQL project, where I analyze real-time gym data from **The Gym Group UK**! This project uses a dataset of **10,000 visit records** to explore and analyze gym membership and visit data, answering key business questions that can help a fitness center understand its customer base better and optimize its services.
 
