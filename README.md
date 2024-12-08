@@ -1,6 +1,6 @@
 # Big_Johns_SQL_PowerBI_Project
 
-![Big Johns](https://www.mybigjohns.com/wp-content/uploads/2022/11/Asset-1Fo.png) 
+![Big Johns](https://images.hotukdeals.com/merchants/avatar_web_square_94_2x/avatar/21037_1.jpg) 
 
 Welcome to my SQL project, where I analyze real-time gym data from **The Gym Group UK**! This project uses a dataset of **10,000 visit records** to explore and analyze gym membership and visit data, answering key business questions that can help a fitness center understand its customer base better and optimize its services.
 
