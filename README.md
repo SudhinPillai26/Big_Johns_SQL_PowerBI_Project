@@ -1,6 +1,6 @@
 # Big_Johns_SQL_PowerBI_Project
 
-![Big Johns](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-qxOOo0k_twjTrubCYqQX-KeBFcuoY-33P2kuu6Mct4Le7iKkQUSCz9jnz1qLkToZgUw&usqp=CAU) 
+![Big Johns](https://rs-menus-api.roocdn.com/images/f23c9c9a-d1a7-4d97-b0b4-a7d4ec9a6ef6/image.jpeg) 
 
 Welcome to my SQL & Power BI project, where I analyze real-time pizza sales data from **The Big John's Pizza UK**! This project uses a dataset of **10,000 visit records** to explore and analyze gym membership and visit data, answering key business questions that can help a fitness center understand its customer base better and optimize its services.
 
