@@ -107,8 +107,7 @@ FROM pizza_sales;
 
 Queries to help building charts to visualize various aspect of pizza sales to gain insight and understand key trends:
 
-1. Daily Trend for Total Orders: For this we created a bar chart that displays the daily trend of total orders over a specifc time period. 
-This chart will help the business identify any patterns or fluctuations in order volumes on a daily basis.
+1. Daily Trend for Total Orders: We created a bar chart to visualize the daily trend of total orders over a specific period, helping the business identify patterns and fluctuations in order volumes.
 ```sql
 
 SELECT
@@ -119,7 +118,7 @@ GROUP BY DATENAME(DW, order_date);
 
 
 ```
-2. Monthly Trend for Total Orders: For this we created a line chart that displays the hourly trend of total orders throughout the day. This chart will help the business identify peak hours or periods of high order activity.
+2. Monthly Trend for Total Orders: We created a line chart to show hourly order trends, helping the business identify peak hours and periods of high activity.
 ```sql
 
 select
@@ -130,7 +129,7 @@ GROUP BY DATENAME(MONTH, order_date);
 
 
 ```
-3. Percentage of Sales by Pizza Category: For this we created a pie chart that shows the distribution of sales across different pizza categories. This chart will help the business identify the popularity of various pizza categories and their contribution to overall sales.
+3. Percentage of Sales by Pizza Category: We created a pie chart to display sales distribution across pizza categories, helping the business identify popular categories and their contribution to overall sales.
 ```sql
 
 SELECT
@@ -142,7 +141,7 @@ GROUP BY pizza_category;
 
 
 ```
-4.  Percentage of Sales by Pizza Size: For this we created a pie chart that shows the distribution of sales across different pizza categories. This chart will help the business understand customer preferences for pizza sizes and their impact on sales.
+4.  Percentage of Sales by Pizza Size: We created a pie chart to show sales distribution across pizza sizes, helping the business understand customer preferences and their impact on sales.
 ```sql
 
 SELECT
@@ -155,7 +154,7 @@ ORDER BY pizza_size;
 
 
 ```
-5. Total Pizzas Sold by Pizza Category: For this we created a funnel chart that presents the total number of pizzas sold for each category. This chart will help the business to compare the sales performance of different pizza categories.
+5. Total Pizzas Sold by Pizza Category: We created a funnel chart to show the number of pizzas sold in each category, helping the business compare sales performance across categories.
 ```sql
 
 SELECT
@@ -167,7 +166,7 @@ GROUP BY pizza_category
 ORDER BY Total_Quantity_Sold DESC;
 
 ```
-6. Top 5 Best Seller Pizzas by Revenue, Total Quantity and Total Orders: For this we created a bar chart highlighting the top-5 best-selling pizzas based on the revenue, total quantity, total orders. This chart will help the business identify the most popular pizza options.
+6. Top 5 Best Seller Pizzas by Revenue, Total Quantity and Total Orders: We created a bar chart showing the top-5 best-selling pizzas by revenue, quantity, and orders, helping the business identify popular pizza options.
 
 By Revenue:
 ```sql
@@ -203,7 +202,7 @@ ORDER BY Total_Orders DESC;
 
 
 ```
-7. Bottom 5 Worst Seller Pizzas by Revenue, Total Quantity and Total Orders: For this we created a bar chart highlighting the bottom-5 worst-selling pizzas based on the revenue, total quantity, total orders. This chart will help the business identify the underperfroming or less popular pizza options.
+7. Bottom 5 Worst Seller Pizzas by Revenue, Total Quantity and Total Orders: We created a bar chart showing the bottom-5 worst-selling pizzas by revenue, quantity, and orders, helping the business identify underperforming pizza options.
 
 By Revenue:
 ```sql
