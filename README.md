@@ -51,7 +51,7 @@ Here’s an overview of the database structure:
 
 ## Business Problems
 
-The following queries were created to solve specific business questions. Each query is designed to analyze key indicators of the pizza sales data to gain insights into Big John's business performance.
+The following queries analyze key indicators of pizza sales to provide insights into Big John's business performance.
 
 ### 1. KPI's
 
@@ -105,7 +105,7 @@ FROM pizza_sales;
 
 ### 2. Charts Requirement
 
-Queries to help building charts to visualize various aspect of pizza sales to gain insight and understand key trends:
+Queries to build charts visualizing pizza sales, providing insights and key trends.
 
 1. Daily Trend for Total Orders: We created a bar chart to visualize the daily trend of total orders over a specific period, helping the business identify patterns and fluctuations in order volumes.
 ```sql
@@ -236,6 +236,14 @@ FROM pizza_sales
 GROUP BY pizza_name
 ORDER BY Total_Orders ASC;
 ```
+
+## Power BI Dashboard Stages
+
+The dashboard creation involved the following stages:
+- Connecting Power Bi with PostgreSQL to import the data.
+- Implemented data cleaning in power query tool utilizing the transform data tools functionality.
+- Implemented data processing utilizing the DAX functionalities to create custom columns (order_day, order_month, day_number, month_number, etc.).
+- Building Charts and utilized advanced functionalities to format the same.
 ---
 
 ## SQL Queries & Analysis
