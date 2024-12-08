@@ -53,23 +53,27 @@ Here’s an overview of the database structure:
 
 The following queries were created to solve specific business questions. Each query is designed to analyze key indicators of the pizza sales data to gain insights into Big John's business performance.
 
-### 1. KPI's Requirement: ####Calculating the following essential key metrics:
+### 1. KPI's
 
 1. Total Revenue: The sum of total price of all pizza orders.
+
 ```sql
 SELECT
 	SUM(total_price) AS Total_Revenue
 FROM pizza_sales;
 ```
-2. Average Order Value: The average amount spent over per order.
-```sql
 
+2. Average Order Value: The average amount spent over per order.
+
+```sql
 SELECT
 	(SUM(total_price) / COUNT(DISTINCT order_id)) AS Avg_order_Value
 FROM pizza_sales;
 
 ```
+
 3. Total Pizzas Sold: The sum of all quantities of pizzas sold.
+
 ```sql
 
 SELECT
@@ -77,7 +81,9 @@ SELECT
 FROM pizza_sales;
 
 ```
+
 4. Total Orders: The total number of orders placed.
+
 ```sql
 
 SELECT
@@ -85,7 +91,9 @@ SELECT
 FROM pizza_sales;
 
 ```
+
 5. Average Pizzas Per Order: The average number of pizzas sold per order.
+
 ```sql
 
 SELECT
@@ -99,7 +107,8 @@ FROM pizza_sales;
 
 Queries to help building charts to visualize various aspect of pizza sales to gain insight and understand key trends:
 
-1. Daily Trend for Total Orders: For this we created a bar chart that displays the daily trend of total orders over a specifc time period. This chart will help the business identify any patterns or fluctuations in order volumes on a daily basis.
+1. Daily Trend for Total Orders: For this we created a bar chart that displays the daily trend of total orders over a specifc time period. 
+This chart will help the business identify any patterns or fluctuations in order volumes on a daily basis.
 ```sql
 
 SELECT
