@@ -2,7 +2,7 @@
 
 ![Big Johns](https://media-cdn.tripadvisor.com/media/photo-s/28/d1/78/97/exterior-view-photo-by.jpg) 
 
-Welcome to my SQL project, where I analyze real-time gym data from **The Gym Group UK**! This project uses a dataset of **10,000 visit records** to explore and analyze gym membership and visit data, answering key business questions that can help a fitness center understand its customer base better and optimize its services.
+Welcome to my SQL & Power BI project, where I analyze real-time pizza sales data from **The Big John's Pizza UK**! This project uses a dataset of **10,000 visit records** to explore and analyze gym membership and visit data, answering key business questions that can help a fitness center understand its customer base better and optimize its services.
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -10,6 +10,7 @@ Welcome to my SQL project, where I analyze real-time gym data from **The Gym Gro
 - [Database Schema](#database-schema)
 - [Business Problems](#business-problems)
 - [SQL Queries & Analysis](#sql-queries--analysis)
+- [Power BI Dashboard Stages](#power-bi-dashboard-stages)
 - [Getting Started](#getting-started)
 - [Questions & Feedback](#questions--feedback)
 - [Contact Me](#contact-me)
@@ -18,13 +19,15 @@ Welcome to my SQL project, where I analyze real-time gym data from **The Gym Gro
 
 ## Introduction
 
-This project aims to demonstrate essential SQL skills by analyzing a dataset from The Gym Group UK Gym. Using SQL, I explored membership details, member demographics, and visit patterns to derive actionable insights. This project showcases fundamental SQL techniques, including creating tables, writing queries, and analyzing data.
+This project aims to demonstrate essential SQL and Power BI skills by analyzing a dataset from The Big John's UK Pizza parlour. Using SQL, I explored membership details, member demographics, and visit patterns to derive actionable insights. This project showcases fundamental SQL techniques, including creating tables, writing queries, and analyzing data.
 
 ## Project Structure
 
-1. **SQL Scripts**: Code to create the database schema and queries for analysis.
-2. **Dataset**: Real-time data on gym visits, membership, and member demographics.
-3. **Analysis**: SQL queries solving practical business problems, each one crafted to address specific questions.
+1. **Dataset**: Real-time data on pizza sales, membership, and member demographics..
+2. **Importing Data**: Import the data into PostgreSQL Server.
+4. **Analysis**: SQL queries solving practical business problems, each one crafted to address specific questions.
+5. **Report Creation**: Report documenting all the business queries.
+6. **Power BI Dashboard Creation**: Create the dashboard for the stakeholders in Power BI.
 
 ---
 
@@ -32,242 +35,200 @@ This project aims to demonstrate essential SQL skills by analyzing a dataset fro
 
 Here’s an overview of the database structure:
 
-### 1. **Members Table**
-- **member_id**: Unique identifier for each member
-- **name**: Name of the member
-
-### 2. **Memberships Table**
-- **member_id**: Unique identifier linked to the `members` table
-- **age**: Age of the member
-- **gender**: Gender of the member ('M' or 'F')
-- **membership_type**: Type of membership (e.g., Monthly, Quarterly)
-- **join_date**: Date when the member joined
-- **status**: Membership status (e.g., Active, Cancelled)
-
-### 3. **Visits Table**
-- **visit_id**: Unique identifier for each visit
-- **member_id**: Linked to the `members` table
-- **visit_date**: Date of the visit
-- **check_in_time**: Check-in time of the visit
-- **check_out_time**: Check-out time of the visit
+### 1. **Pizza Sales Table**
+- **pizza_id**: Unique identifier for each pizza
+- **order_id**: Unique order identifier
+- **pizza_name_id**: Unique pizza name identifier
+- **quantity**: Quantity of pizza sold
+- **order_date**: Date the order was placed
+- **order_time**: Time the order was placed
+- **unit_price**: Unit price per pizza
+- **total_price**: Total order price after quantity
+- **pizza_size**: Size of the pizza (S, M, L, XL)
+- **pizza_category**: Category of the pizza (Classic, Veggie, Supreme, Chicken)
+- **pizza_ingredients**: Ingredients served in pizza
+- **pizza_name**: Name of the pizza
 
 ## Business Problems
 
-The following queries were created to solve specific business questions. Each query is designed to provide insights based on gym membership and visit data.
+The following queries were created to solve specific business questions. Each query is designed to analyze key indicators of the pizza sales data to gain insights into Big John's business performance.
 
-1. Retrieve the **name** and **membership_type** of female members.
+### 1. KPI's Requirement
+
+Calculating the following essential key metrics:
+
+1. Total Revenue: The sum of total price of all pizza orders.
+```sql
+SELECT
+	SUM(total_price) AS Total_Revenue
+FROM pizza_sales;
+```
+2. Average Order Value: The average amount spent over per order.
 ```sql
 
-select 
-	members.name,
-	memberships.gender,
-	memberships.membership_type
-
-From members
-Inner Join memberships
-ON members.member_id = memberships.member_id
-Where memberships.gender = 'F';
+SELECT
+	(SUM(total_price) / COUNT(DISTINCT order_id)) AS Avg_order_Value
+FROM pizza_sales;
 
 ```
-3. Find members who have a **Monthly membership** and joined after **2023-11-01**.
+3. Total Pizzas Sold: The sum of all quantities of pizzas sold.
 ```sql
 
-select 
-	members.member_id,
-	members.name,
-	memberships.membership_type,
-	memberships.join_date
-from members
-Inner Join memberships
-ON members.member_id = memberships.member_id
-Where memberships.membership_type = 'Monthly' and memberships.join_date > '2023-11-01'
-Order by 1;
+SELECT
+	SUM(quantity) AS Total_pizza_sold
+FROM pizza_sales;
 
 ```
-4. List the **name** and **status** of active members over **25**.
+4. Total Orders: The total number of orders placed.
 ```sql
 
-select 
-	members.member_id,
-	members.name,
-	memberships.age,
-	memberships.status
-from members
-Inner Join memberships
-On members.member_id = memberships.member_id
-Where 
-	memberships.status = 'Active' and memberships.age > 25
-Order by 1;
+SELECT
+	COUNT(DISTINCT order_id) AS Total_Orders
+FROM pizza_sales;
 
 ```
-5. Get details of **visits** on a specific date (**2024-01-01**).
+5. Average Pizzas Per Order: The average number of pizzas sold per order.
 ```sql
 
-select 
-	members.member_id,
-	members.name,
-	memberships.age,
-	memberships.gender,
-	memberships.membership_type,
-	memberships.status,
-	visits.visit_date,
-	visits.check_in_time,
-	visits.check_out_time
-from visits
-left join members
-on visits.member_id = members.member_id
-Inner Join memberships
-on memberships.member_id = members.member_id
-Where visits.visit_date = '2024-01-01'
-Order by 1;
+SELECT
+	CAST(CAST(SUM(quantity) AS DECIMAL(10,2)) / 
+	CAST(COUNT(DISTINCT order_id) AS DECIMAL(10,2)) AS DECIMAL(10,2)) AS Avg_Pizzas_per_order
+FROM pizza_sales;
 
 ```
-6. List members with a **Quarterly membership** aged between **20 and 30**.
+
+### 2. Charts Requirement
+
+Queries to help building charts to visualize various aspect of pizza sales to gain insight and understand key trends:
+
+1. Daily Trend for Total Orders: For this we created a bar chart that displays the daily trend of total orders over a specifc time period. This chart will help the business identify any patterns or fluctuations in order volumes on a daily basis.
 ```sql
 
-select 
-	members.member_id,
-	members.name,
-	memberships.age,
-	memberships.membership_type
-from members
-Inner join memberships
-on members.member_id = memberships.member_id
-Where 
-	memberships.membership_type = 'Quaterly' and 
-	memberships.age Between 20 and 30
-Order by 1;
+SELECT
+	DATENAME(DW, order_date) AS order_day,
+	COUNT(DISTINCT order_id) AS total_orders 
+FROM pizza_sales
+GROUP BY DATENAME(DW, order_date);
+
 
 ```
-6. Count total visits made by each member.
-```sql
-
-select 
-	members.name,
-	members.member_id,
-	count(visits.visit_id) as total_visits
-from visits
-inner join members
-on members.member_id = visits.member_id
-Group by 2
-Order by 3 Desc;
-
-```
-7. Count members by membership type (e.g., Monthly, Weekly, Quarterly).
-```sql
-
-select 
-	membership_type,
-	count(*) as total_members_enrolled
-from memberships
-Group By 1;
-
-```
-9. Calculate the average age of members, grouped by membership type.
+2. Monthly Trend for Total Orders: For this we created a line chart that displays the hourly trend of total orders throughout the day. This chart will help the business identify peak hours or periods of high order activity.
 ```sql
 
 select
-	membership_type,
-	avg(age) as average_members_age
-	
-from memberships
-Group by 1;
+	DATENAME(MONTH, order_date) as Month_Name,
+	COUNT(DISTINCT order_id) as Total_Orders
+from pizza_sales
+GROUP BY DATENAME(MONTH, order_date);
+
 
 ```
-10. Total visits for each visit date.
+3. Percentage of Sales by Pizza Category: For this we created a pie chart that shows the distribution of sales across different pizza categories. This chart will help the business identify the popularity of various pizza categories and their contribution to overall sales.
 ```sql
 
-select 
-	visit_date,
-	count(*) as total_visits
-from visits
-Group by visit_date
-Order by 1;
+SELECT
+	pizza_category,
+	CAST(SUM(total_price) AS DECIMAL(10,2)) as total_revenue,
+	CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) from pizza_sales) AS DECIMAL(10,2)) AS PCT
+FROM pizza_sales
+GROUP BY pizza_category;
+
 
 ```
-12. Count members by status (e.g., Active or Cancelled).
+4.  Percentage of Sales by Pizza Size: For this we created a pie chart that shows the distribution of sales across different pizza categories. This chart will help the business understand customer preferences for pizza sizes and their impact on sales.
 ```sql
 
-select  
-	status,
-	count(*) as count_of_members
-from memberships
-Where status is not null
-Group by 1;
+SELECT
+	pizza_size,
+	CAST(SUM(total_price) AS DECIMAL(10,2)) as total_revenue,
+	CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) from pizza_sales) AS DECIMAL(10,2)) AS PCT
+FROM pizza_sales
+GROUP BY pizza_size
+ORDER BY pizza_size;
+
 
 ```
-11. Top 3 members with the highest visits.
+5. Total Pizzas Sold by Pizza Category: For this we created a funnel chart that presents the total number of pizzas sold for each category. This chart will help the business to compare the sales performance of different pizza categories.
 ```sql
 
-select 
-	visits.member_id,
-	members.name,
-	count(*) as total_visits
-from visits
-Inner Join members
-On members.member_id = visits.member_id
-Group by 1,2
-Order by 3 Desc
-Limit 3;
+SELECT
+	pizza_category,
+	SUM(quantity) as Total_Quantity_Sold
+FROM pizza_sales
+WHERE MONTH(order_date) = 2
+GROUP BY pizza_category
+ORDER BY Total_Quantity_Sold DESC;
 
 ```
-12. Active Monthly members grouped by membership type, sorted by recent join dates.
+6. Top 5 Best Seller Pizzas by Revenue, Total Quantity and Total Orders: For this we created a bar chart highlighting the top-5 best-selling pizzas based on the revenue, total quantity, total orders. This chart will help the business identify the most popular pizza options.
+
+By Revenue:
 ```sql
 
-select 
-	members.member_id,
-	members.name,
-	memberships.membership_type,
-	memberships.join_date
-from memberships
-inner join members
-on members.member_id = memberships.member_id
-where membership_type = 'Monthly' and status = 'Active'
-Group by 1,2,3,4
-Order by 4 Desc;
-
-```
-14. Members with more than 2 visits, sorted by total visits, displaying the top 5.
-```sql
-
-select 
-	members.name,
-	count(*) as total_visits
-from visits
-inner join members
-on members.member_id = visits.member_id
-Group by 1
-Having count(*) > 2
-Order by 2 Desc
-Limit 5;
-
-```
-15. Members who joined in 2023, grouped by membership type (where each group has >1 member).
-```sql
-
-select 
-	memberships.membership_type,
-	count(*),
-	Extract( Year from memberships.join_date) as joined_date_year
-from members
-inner join memberships
-on members.member_id = memberships.member_id
-Where Extract( Year from join_date) = '2023'
-Group by 1,3
-having count(*) > 1;
-
+SELECT
+	Top 5 pizza_name,
+	SUM(total_price) AS Total_Revenue
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY Total_Revenue DESC;
 ```
 
-16. Average age of active members, grouped by membership type, limited to the top 3 results.
+By Total Quantity:
 ```sql
-select 
-	membership_type,
-	avg(age) as average_age
-from memberships
-Where status = 'Active'
-Group by 1
-Order by 2 Asc;
 
+SELECT
+	Top 5 pizza_name,
+	SUM(quantity) AS Total_Pizza_Sold
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY Total_Pizza_Sold DESC;
+```
+
+By Total Orders:
+```sql
+
+SELECT
+	Top 5 pizza_name,
+	COUNT(DISTINCT order_id) AS Total_Orders
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY Total_Orders DESC;
+
+
+```
+7. Bottom 5 Worst Seller Pizzas by Revenue, Total Quantity and Total Orders: For this we created a bar chart highlighting the bottom-5 worst-selling pizzas based on the revenue, total quantity, total orders. This chart will help the business identify the underperfroming or less popular pizza options.
+
+By Revenue:
+```sql
+
+SELECT
+	Top 5 pizza_name,
+	SUM(total_price) AS Total_Revenue
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY Total_Revenue ASC;
+```
+
+By Total Quantity:
+```sql
+
+SELECT
+	Top 5 pizza_name,
+	SUM(quantity) AS Total_Pizza_Sold
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY Total_Pizza_Sold ASC;
+```
+
+By Total Orders:
+```sql
+
+SELECT
+	Top 5 pizza_name,
+	COUNT(DISTINCT order_id) AS Total_Orders
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY Total_Orders ASC;
 ```
 ---
 
