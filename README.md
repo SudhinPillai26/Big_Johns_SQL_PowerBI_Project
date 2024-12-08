@@ -260,6 +260,8 @@ The dashboard creation involved the following stages:
 
 ![Big Johns](https://github.com/user-attachments/assets/95016bd3-de01-4118-84dd-211120690a91) 
 
+The analysis.pbix file contains the Power BI dashboard for this project, showcasing interactive visualizations and insights designed to address key business questions.
+
 ## Getting Started
 
 ### Prerequisites
