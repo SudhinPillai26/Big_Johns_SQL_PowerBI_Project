@@ -254,7 +254,7 @@ The dashboard creation involved the following stages:
 
 ### Dashboard Main Page
 
-![Big Johns](https://media-cdn.tripadvisor.com/media/photo-s/28/d1/78/97/exterior-view-photo-by.jpg) 
+![Big Johns](https://github.com/user-attachments/assets/23bb4802-5a3e-4d17-a095-8740b9b4df6d) 
 
 ### Dashboard Best & Worst Sellers Page
 
